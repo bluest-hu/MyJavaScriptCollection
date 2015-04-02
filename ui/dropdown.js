@@ -1,4 +1,4 @@
-(function (win, $, undefined) {
+;(function (win, $, undefined) {
     /**
      * 下拉菜单
      * html 结构
@@ -61,9 +61,9 @@
         // 显示的框
         this.$ShowResultInput = this.$Dropdown.find(".input-box");
         // 下拉点击按钮
-        this.$DropDownBtn = this.$Dropdown.find(".drop-down-btn");
+        this.$DropdownBtn = this.$Dropdown.find(".drop-down-btn");
         // 下拉点击的按钮
-        this.$DropDownArrow = this.$Dropdown.find(".drop-down-arrow");
+        //this.$DropdownArrow = this.$Dropdown.find(".drop-down-arrow");
         // 下拉列表
         this.$MenuList = this.$Dropdown.find(".menu-list");
         // 用于存储向服务器发送信息的隐藏域
@@ -105,9 +105,6 @@
 
         // 初始值
         if (this.defaultData !== undefined) {
-
-            console.log(this.defaultDataIsShowValue)
-
             this.setValue(this.defaultData, this.defaultDataIsShowValue, this.convertFn);
         }
 
@@ -284,7 +281,7 @@
     Dropdown.prototype.bindEvent = function () {
         var that = this;
 
-        this.$DropDownBtn.on("click", function (event) {
+        this.$DropdownBtn.on("click", function (event) {
             event.preventDefault();
 
             handleClick(event);
@@ -306,9 +303,9 @@
 
         $("body").on("click", function(event){
 
-            that.$MenuList.slideUp("fast",function() {
+            that.$MenuList.slideUp("fast", function() {
                 that.isMenuDown = false;
-                that.$DropDownBtn.removeClass("active");
+                that.$DropdownBtn.removeClass("active");
             });
         });
 
@@ -323,7 +320,7 @@
             // 设置值
             that.setAllValue(showValue, trueValue);
 
-            that.$DropDownBtn.removeClass("active");
+            that.$DropdownBtn.removeClass("active");
             that.$ShowResultInput.removeClass("active");
 
             that.$MenuList.slideUp("fast",function () {
@@ -341,15 +338,14 @@
 
         var handleClick = function (event) {
             event.preventDefault();
-
             if ( !that.isMenuDown ) {
                 that.$ShowResultInput.addClass("active");
-                that.$DropDownBtn.addClass("active");
+                that.$DropdownBtn.addClass("active");
                 that.$MenuList.slideDown("fast", function () {
                     that.isMenuDown = true;
                 });
             } else {
-                that.$DropDownBtn.removeClass("active");
+                that.$DropdownBtn.removeClass("active");
                 that.$ShowResultInput.removeClass("active");
                 that.$MenuList.slideUp("fast", function () {
                     that.isMenuDown = false;
@@ -367,6 +363,11 @@
     }
 
     win.Util.UI.DropDown = Dropdown;
+})(window, jQuery);
+
+
+(function (window, $, undefined) {
+
 })(window, jQuery);
 
 (function (win) {
@@ -475,8 +476,6 @@
 
     win.Util.BirthDayPicker = _DatePicker;
 })(window);
-
-
 
 
 (function (win) {
