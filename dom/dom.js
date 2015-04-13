@@ -12,7 +12,6 @@
  * @returns {Array} 返回相对应className的一组元素的集合
  */
 function getElementsByClassName(className, parentNodes) {
-
 	parentNodes = parentNodes || document;
 	parentNodes = toArray(parentNodes);
 	var result = [], 
@@ -20,7 +19,7 @@ function getElementsByClassName(className, parentNodes) {
 
 	for ( var i = 0, length = parentNodes.length; i < length; i++) {
         
-		if (parentNodes[i].getElementsByClassName) {
+		if ( parentNodes[i].getElementsByClassName) {
 
 			tempSet = parentNodes[i].getElementsByClassName(className);
 
@@ -177,7 +176,6 @@ function getParentNodes(elements) {
 	} else {
 		return null;
 	}
-	
 }
 
 /**
@@ -302,6 +300,21 @@ function removeAllChildren(elements) {
 	}
 }
 
+/**
+ * [each description]
+ * @param  {[type]} elements [description]
+ * @param  {[type]} callBack [description]
+ * @return {[type]}          [description]
+ */
+function each (elements, callBack) {
+	elements = toArray(elements);
+
+	for (var i = 0, length = elements.length; i < length; i++) {
+		if (callBack && !!callBack) {
+			callBack(i, elements[i]);
+		}
+	}
+}
 
 (function(win) {
 	function addEvent(element, type, handler) {
