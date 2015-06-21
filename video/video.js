@@ -485,3 +485,21 @@ function videoPlay() {
 更新音量信息 
     volumeChange       => volume{get,set}
 **/
+
+
+(function () {
+	var Video = (function () {
+		return function () {
+			this.video = null;
+		};
+	})();
+
+	video.prototype = {
+		play: function () {
+
+		},
+		stop: function () {
+
+		}
+	}
+})();

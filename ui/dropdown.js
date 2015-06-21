@@ -176,7 +176,6 @@
                 html += '<li class="menu-item">' +
                             '<a class="option" href="#"  data-value="' + values.trueValue  +'">' + values.showValue + '</a>' +
                         '</li>';
-
             }
         }
         // 清空下拉菜单

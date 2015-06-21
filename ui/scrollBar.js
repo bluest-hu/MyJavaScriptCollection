@@ -10,7 +10,6 @@
 
         // todo 读取相对应的包含快的 overflow  信息是否显示 垂直 水平位置的 滚定条
 
-
         // 滚动包含框
         this.$Scroll        = $(config.scroll);
         // 滑动的内容区块
@@ -125,6 +124,13 @@
         // 滑块所处的位置
         this.scrollThumbInfo.currentY = 0;
     };
+
+
+    _Scroll.prototype.genScrollBar = function () {
+
+
+    };
+
 
     _Scroll.prototype.bingAction =  function () {
         var self = this;
@@ -245,8 +251,6 @@
             }
         });
 
-
-
         self.$Scroll.on("DOMMouseScroll", function (event) {
             event = event || window.event;
 
@@ -327,3 +331,4 @@
 
     window.Scroll= _Scroll;
 })();
+
