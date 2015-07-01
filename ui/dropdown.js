@@ -1,4 +1,32 @@
 ;(function (win, $, undefined) {
+
+    /**
+     * 主要配置文件 均为可选
+     * @type {Object}
+     */
+    var defaultConfig = {
+        // 输入框中的默认值 可选
+        defaultData : null,
+        // 输入框默认值是否为显示值 默认是显示值 可选
+        defaultDataIsShowValue: true,
+        // 回调函数 可选
+        callBack : null,
+        // 下拉菜单填充值 为数组类型 可选
+        initData : null,
+        // 下拉菜单填充值是否为显示值 默认为真 可选
+        initDataIsShowValue: true,
+        /*
+         * 显示值转化为真实值 或者 真实值转化为显示值的函数
+         * 会传入一个值为 boolean 的形参 isShowValueConvertToTrueValue 默认为真
+         * 如果为 true 那是 显示值 转化为 真实值
+         * 如果为 false 那是 真实值 转为为 显示值
+         * 如果该函数未定义 默认 显示值与真实值 相等
+         */
+        convertFn: function (value) {
+            return value;
+        }
+    };
+
     /**
      * 下拉菜单
      * html 结构
@@ -29,33 +57,6 @@
      * @constructor
      */
     var Dropdown = function ($Dropdown, config) {
-        /**
-         * 主要配置文件 均为可选
-         * @type {Object} 
-         */
-        var defaultConfig = {
-            // 输入框中的默认值 可选
-            defaultData : null,
-            // 输入框默认值是否为显示值 默认是显示值 可选
-            defaultDataIsShowValue: true,
-            // 回调函数 可选
-            callBack : null,
-            // 下拉菜单填充值 为数组类型 可选
-            initData : null,
-            // 下拉菜单填充值是否为显示值 默认为真 可选
-            initDataIsShowValue: true,
-            /*
-            * 显示值转化为真实值 或者 真实值转化为显示值的函数
-            * 会传入一个值为 boolean 的形参 isShowValueConvertToTrueValue 默认为真
-            * 如果为 true 那是 显示值 转化为 真实值
-            * 如果为 false 那是 真实值 转为为 显示值
-            * 如果该函数未定义 默认 显示值与真实值 相等
-            */
-            convertFn: function (value) {
-                return value;
-            }
-        };
-
         // 下拉菜单的包裹层
         this.$Dropdown = $Dropdown instanceof $ ? $Dropdown : $($Dropdown);
         // 显示的框

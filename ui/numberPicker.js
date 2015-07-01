@@ -1,3 +1,4 @@
+
 (function (window, $, undefined) {
     var defaultConfig = {
             max : null,
@@ -57,8 +58,6 @@
         this.min = (domDataMin !== undefined && $.isNumeric(domDataMin) ? (1 * domDataMin) : this.min);
         this.default = (domDataDefault !== undefined && $.isNumeric(domDataDefault) ? (1 * domDataDefault) : this.default);
 
-
-
         //  防止出现 最小值 大于 最大值 的二逼状态
         if (this.max !== null && this.min !== null) {
             if (this.max < this.min) {
@@ -115,8 +114,6 @@
             _value = self.default;
         }
 
-
-        console.log(_value  + " sdasdasdasdasd");
         if ( ! self.float ) {
             _value = parseInt(_value);
         }
@@ -127,7 +124,7 @@
     };
 
     /**
-     *
+     *  
      * @param value {Number} 设置数字
      */
     _numberPicker.prototype.setValue = function (value) {
@@ -156,6 +153,14 @@
         this.$Input.attr("value", value);
     };
 
-    window.numberPicker = _numberPicker;
+    if ( !window.Util ) {
+        window.Util = {};
+    }   
+
+    if ( !window.Util.UI ) {
+        window.Util.UI = {};
+    }
+
+    window.Util.UI.NumberPicker = _numberPicker;
 
 })(window,jQuery);

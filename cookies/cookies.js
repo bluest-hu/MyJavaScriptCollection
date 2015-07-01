@@ -33,12 +33,14 @@
 
     /**
      * 设置cookies
-     * @param {[type]} name  cookies的key
-     * @param {[type]} value cookies的value
-     * @param {Number} days  过期时间（单位为天）
+     * @param {[type]}  name  cookies的key
+     * @param {[type]}  value cookies的value
+     * @param {Number}  days  过期时间（单位为天）
+     * @param {String}  path
+     * @param {Boolean} secure
      */
     // todo 完善时间（除天以为的其他单位），以及其他选项
-    _Cookie.set = function (name, value, days) {
+    _Cookie.set = function (name, value, days, domain, path, secure) {
         var expires = new Date();
 
         expires.setTime(expires.getTime() + days * 24 * 3600 * 1000);

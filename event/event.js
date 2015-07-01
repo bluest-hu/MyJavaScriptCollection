@@ -19,8 +19,7 @@
 	Event.on = function (element, type, handler) {
 
 		if (element.addEventListener) {
-			element.addEventListener(type, handler, false);
-			return ;
+			return element.addEventListener(type, handler, false);
 		}
 
 		if ( !handler.__guid ) {
@@ -45,21 +44,32 @@
 	};
 
 	Event.off = function (element, type, hadler) {
+        if (element.removeEventListener) {
+            return element.removeEvent(type, handler);
+        }
+
 		if (!element.events) {
-			return;
+			return false;
 		}
 
+        var events = element.events[type];
 
+        if ( !!hadler && hadler.__guid !== undefined && events && (hadler.__guid in events)) {
+            delete element.events[type][hadler.__guid];
+        }
+
+        return true;
 	};
 
 	Event.handler = function (event) {
+
+        event = event || window.event;
 
         var handlers = this.events[event.type];
 
         for (var __guid in  handlers) {
             if (handlers.hasOwnProperty(__guid)) {
-                var _handler = handlers[__guid];
-                this.handler = _handler;
+                this.handler = handlers[__guid];
                 this.handler(event);
             }
         }
@@ -69,7 +79,8 @@
     	
     }
 
-	Event.fire = function (type) {
+	Event.fire = function (element,type) {
+
 
 	};
 
